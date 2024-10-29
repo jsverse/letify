@@ -1,60 +1,68 @@
-# NgLetify
+<div align="center">
+  <img width="300px" src="./logo-gradient.svg" alt="Letify Logo">
+</div>
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+<h3 align="center">It sounds like a spell and works like a charm ✨</h3>
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
+<div align="center">
+  <a href="https://www.npmjs.com/package/@jsverse/letify">
+    <img src="https://img.shields.io/npm/v/@jsverse/letify.svg?style=flat-square" alt="npm version">
+  </a>
+  <a href="https://github.com/jsverse/letify/actions/workflows/ci.yml">
+    <img src="https://github.com/jsverse/letify/workflows/CI/badge.svg" alt="build status">
+  </a>
+  <a href="https://www.npmjs.com/package/@jsverse/letify">
+    <img src="https://img.shields.io/npm/dt/@jsverse/letify.svg?style=flat-square" alt="npm downloads">
+  </a>
+  <a href="https://github.com/jsverse/letify/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/jsverse/letify.svg?style=flat-square" alt="license">
+  </a>
+</div>
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/nx-api/js?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+--------------------
 
-## Finish your CI setup
+Letify CLI helps Angular developers optimize their templates by scanning your files and detecting multiple async subscriptions to the same stream.
 
-[Click here to finish setting up your workspace!](https://cloud.nx.app/connect/GJLsPizHFR)
+### Usage
+To get started, install Letify CLI:
 
-
-## Run tasks
-
-To build the library use:
-
-```sh
-npx nx build
+```bash
+npm i -D @jsverse/letify
 ```
-        
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Versioning and releasing
-
-To version and release the library use
-
-```
-npx nx release
+Then, run the command:
+```bash
+npx letify [analyze|fix] 'a/b.html' 'c/**/*.html' ...
 ```
 
-Pass `--dry-run` to see what would happen without actually releasing the library.
+* `analyze`: Identifies duplicate subscriptions in the specified files and generates a report.
+* `fix`: Identifies duplicate subscriptions and replace duplications with a single `@let` declaration at the beginning of the template.
 
-[Learn more about Nx release &raquo;](hhttps://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+#### CI / Lint-
+Letify will return an error exit code if any duplicate subscriptions are detected in the specified files.
+It can be seamlessly integrated into your [lint-staged](https://github.com/lint-staged/lint-staged) or CI workflows to
+prevent duplicate subscriptions from being committed.
 
+#### Usage notes
+* Letify ignores commented code and does not analyze it.
+* Keyed reads (`data[prop] | async`) and function calls with arguments (`myMethod(value, ...) | async`) are currently not supported.
+* You'll need Angular `>=18.1` to use the `@let` syntax, if you are using an older version, run the `analyze` command and
+use alternatives to reuse your subscriptions.
 
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### Options
 
-## Install Nx Console
+* `-r, --reporter <type>`: Specifies the report format:
+  * `html` (default): Generates an HTML report.
+  * `list`: Outputs a simple list of suggestions.
+  * `json`: Provides a JSON report for programmatic use.
+* `-o, --open`: Automatically opens the HTML report once generated (default `true`.
+* `--verify-convention` (default: `false`): Checks that stream names (observables) in the templates follow the convention of ending with a `$` sign.
+* `--variable-suffix` (default: `value`): Adds a suffix to the declared variable in `fix` mode, mainly to avoid collisions.
 
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
+### Debugging
 
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/nx-api/js?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+You can extend the default logs by setting the `DEBUG` environment variable:
+```bash
+DEBUG=letify:* npx letify ...
+```
+Supported namespaces: `letify:*|letify:fix`.
