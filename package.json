@@ -1,6 +1,6 @@
 {
   "name": "@jsverse/letify",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "license": "MIT",
   "bin": {
     "letify": "index.esm.js"
