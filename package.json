@@ -5,6 +5,9 @@
   "bin": {
     "letify": "index.esm.js"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "nx build",
     "test": "nx test",
