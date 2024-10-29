@@ -1,42 +1,61 @@
 {
-	"name": "@ng-letify/source",
-	"version": "0.0.1",
-	"license": "MIT",
-	"scripts": {
-		"build": "nx build",
-		"test": "nx test"
-	},
-	"dependencies": {
-		"tslib": "^2.3.0"
-	},
-	"devDependencies": {
-		"@eslint/js": "^9.8.0",
-		"@nx/eslint": "19.8.3",
-		"@nx/eslint-plugin": "19.8.3",
-		"@nx/js": "19.8.3",
-		"@nx/vite": "19.8.3",
-		"@nx/web": "19.8.3",
-		"@nx/workspace": "19.8.3",
-		"@swc-node/register": "~1.9.1",
-		"@swc/core": "~1.5.7",
-		"@swc/helpers": "~0.5.11",
-		"@types/node": "18.16.9",
-		"@vitest/coverage-v8": "^1.0.4",
-		"@vitest/ui": "^1.3.1",
-		"eslint": "^9.8.0",
-		"eslint-config-prettier": "^9.0.0",
-		"nx": "19.8.3",
-		"prettier": "^2.6.2",
-		"tslib": "^2.3.0",
-		"typescript": "~5.5.2",
-		"typescript-eslint": "^8.0.0",
-		"vite": "^5.0.0",
-		"vitest": "^1.3.1"
-	},
-	"nx": {
-		"includedScripts": []
-	},
-	"type": "commonjs",
-	"main": "./src/index.js",
-	"typings": "./src/index.d.ts"
+  "name": "@jsverse/letify",
+  "version": "0.0.1",
+  "license": "MIT",
+  "bin": {
+    "letify": "index.esm.js"
+  },
+  "scripts": {
+    "build": "nx build",
+    "test": "nx test",
+    "prepare": "husky"
+  },
+  "peerDependencies": {
+    "@angular/compiler": ">=17.0.0"
+  },
+  "dependencies": {
+    "@angular/compiler": ">=17.0.0",
+    "@jsverse/utils": "1.0.0-beta.2",
+    "cheerio": "1.0.0",
+    "cli-table3": "0.6.5",
+    "commander": "12.1.0",
+    "debug": "4.3.7",
+    "glob": "11.0.0",
+    "open": "10.1.0",
+    "ora": "8.1.0",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.8.0",
+    "@nx/eslint": "19.8.4",
+    "@nx/eslint-plugin": "19.8.4",
+    "@nx/js": "19.8.4",
+    "@nx/rollup": "19.8.4",
+    "@nx/vite": "19.8.4",
+    "@nx/web": "19.8.4",
+    "@nx/workspace": "19.8.4",
+    "@swc-node/register": "~1.9.1",
+    "@swc/core": "~1.5.7",
+    "@swc/helpers": "~0.5.11",
+    "@types/debug": "^4.1.12",
+    "@types/node": "18.16.9",
+    "@vitest/coverage-v8": "^1.0.4",
+    "@vitest/ui": "^1.3.1",
+    "eslint": "^9.8.0",
+    "eslint-config-prettier": "^9.0.0",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "nx": "19.8.4",
+    "prettier": "^2.6.2",
+    "tslib": "^2.3.0",
+    "tsx": "^4.19.1",
+    "typescript": "~5.5.2",
+    "typescript-eslint": "^8.0.0",
+    "verdaccio": "^5.0.4",
+    "vite": "^5.0.0",
+    "vitest": "^1.3.1"
+  },
+  "nx": {
+    "includedScripts": []
+  }
 }
