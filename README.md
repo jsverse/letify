@@ -5,18 +5,10 @@
 <h3 align="center">It sounds like a spell and works like a charm ✨</h3>
 
 <div align="center">
-  <a href="https://www.npmjs.com/package/@jsverse/letify">
-    <img src="https://img.shields.io/npm/v/@jsverse/letify.svg?style=flat-square" alt="npm version">
-  </a>
-  <a href="https://github.com/jsverse/letify/actions/workflows/ci.yml">
-    <img src="https://github.com/jsverse/letify/workflows/CI/badge.svg" alt="build status">
-  </a>
-  <a href="https://www.npmjs.com/package/@jsverse/letify">
-    <img src="https://img.shields.io/npm/dt/@jsverse/letify.svg?style=flat-square" alt="npm downloads">
-  </a>
-  <a href="https://github.com/jsverse/letify/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/jsverse/letify.svg?style=flat-square" alt="license">
-  </a>
+  <a href="https://www.npmjs.com/package/@jsverse/letify"><img src="https://img.shields.io/npm/v/@jsverse/letify.svg?style=flat-square" alt="npm version"></a>
+  <a href="https://github.com/jsverse/letify/actions/workflows/ci.yml"><img src="https://github.com/jsverse/letify/workflows/CI/badge.svg" alt="build status"></a>
+  <a href="https://www.npmjs.com/package/@jsverse/letify"><img src="https://img.shields.io/npm/dt/@jsverse/letify.svg?style=flat-square" alt="npm downloads"></a>
+  <a href="https://github.com/jsverse/letify/blob/main/LICENSE"><img src="https://img.shields.io/github/license/jsverse/letify.svg?style=flat-square" alt="license"></a>
 </div>
 
 --------------------
